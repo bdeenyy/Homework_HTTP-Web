@@ -1,13 +1,10 @@
-import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
 import org.apache.http.client.utils.URLEncodedUtils;
 
 import java.io.*;
 import java.net.*;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -41,8 +38,6 @@ public class Server {
                 final var in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 final var out = new BufferedOutputStream(socket.getOutputStream());) {
             {
-                // read only request line for simplicity
-                // must be in form GET /path HTTP/1.1
                 final var requestLine = in.readLine();
                 final var parts = requestLine.split(" ");
 
@@ -52,9 +47,6 @@ public class Server {
                 }
 
                 Map<String, String> queryParams = getQueryParams(parts[1]);
-                // instead of "getQueryParam(String name)" just use queryParams.get()
-                // p.s.  i could realize method which returns List<NameValuePair>, but it'l be
-                //  parse every time with a new request, it is not efficient in terms of saving resources
 
                 String path;
                 if (parts[1].contains("?")) {
@@ -71,10 +63,9 @@ public class Server {
                     out.flush();
                 }
 
-                final var filePath = Path.of(".", "public", path);
+                final var filePath = FileSystems.getDefault().getPath("public", path);
                 final var mimeType = Files.probeContentType(filePath);
 
-                // special case for classic
                 if (path.equals("/classic.html")) {
                     final var template = Files.readString(filePath);
                     final var content = template.replace(
