@@ -4,25 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a8399c3-a322-45bd-9fb6-604e6780827b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/app.js.html" afterDir="false" />
+    <list default="true" id="8a8399c3-a322-45bd-9fb6-604e6780827b" name="Changes" comment="Task №2 complete">
+      <change afterPath="$PROJECT_DIR$/public/app.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/classic.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/events.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/events.js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/events.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/forms.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/links.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/resources.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/spring.png.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/spring.svg.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/styles.css.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/spring.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/spring.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Handler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +35,30 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="feature/query_" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="e992bfb1-e990-4f55-991c-5c44e0d3e1e0" />
+        <option name="url" value="https://github.com/bdeenyy/Homework_HTTP-Web.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -83,6 +104,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -95,6 +120,14 @@
       <option name="presentableId" value="Default" />
       <updated>1671439046769</updated>
     </task>
+    <task id="LOCAL-00001" summary="Task №2 complete">
+      <created>1675113249032</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675113249032</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,7 +135,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -110,5 +155,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Task №2 complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Task №2 complete" />
   </component>
 </project>
