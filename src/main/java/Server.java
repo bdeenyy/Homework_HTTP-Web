@@ -1,6 +1,3 @@
-import org.apache.http.NameValuePair;
-import org.apache.http.client.utils.URLEncodedUtils;
-
 import java.io.*;
 import java.net.*;
 import java.nio.file.FileSystems;
@@ -21,11 +18,10 @@ public class Server {
     }
 
     public void runServer(int port) {
-        final ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
-        try {
-            final var serverSocket = new ServerSocket(port);
+        ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
             while (true) {
-                final var clientSocket = serverSocket.accept();
+                Socket clientSocket = serverSocket.accept();
                 executorService.submit(() -> handleConnection(clientSocket));
             }
         } catch (IOException exception) {
@@ -36,22 +32,21 @@ public class Server {
     public static void handleConnection(Socket socket) {
         try (
                 final var in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                final var out = new BufferedOutputStream(socket.getOutputStream());) {
+                final var out = new BufferedOutputStream(socket.getOutputStream())) {
             {
                 final var requestLine = in.readLine();
                 final var parts = requestLine.split(" ");
 
                 if (parts.length != 3) {
-                    // just close socket
                     socket.close();
                 }
 
-                Map<String, String> queryParams = getQueryParams(parts[1]);
+                Map<String, String> queryParams = Request.getQueryParams(parts[1]);
 
                 String path;
                 if (parts[1].contains("?")) {
                     path = parts[1].substring(0, parts[1].indexOf("?"));
-                }   else path = parts[1];
+                } else path = parts[1];
 
                 if (!VALID_PATHS.contains(path)) {
                     out.write((
@@ -81,9 +76,7 @@ public class Server {
                     ).getBytes());
                     out.write(content);
                     out.flush();
-
                 }
-
                 final var length = Files.size(filePath);
                 out.write((
                         "HTTP/1.1 200 OK\r\n" +
@@ -100,22 +93,14 @@ public class Server {
         }
     }
 
-    public static Map<String, String> getQueryParams(String extras) {
-        Map<String, String> results = new HashMap<String, String>();
-        try {
-            URI rawExtras = new URI("?" + extras);
-            List<NameValuePair> extraList = URLEncodedUtils.parse(rawExtras, "UTF-8");
-            for (NameValuePair item : extraList) {
-                String name = item.getName();
-                int i = 0;
-                while (results.containsKey(name)) {
-                    name = item.getName() + ++i;
-                }
-                results.put(name, item.getValue());
-            }
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+
+    public void addHandler(String requestType, String path, Handler handler) {
+        if (requestType.equals("GET") && isValidPath(path)) {
+            handler.handleRequest();
         }
-        return results;
+    }
+
+    private boolean isValidPath(String path) {
+        return VALID_PATHS.contains(path);
     }
 }
